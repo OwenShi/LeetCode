@@ -9,31 +9,31 @@
 <body>
    <script>
 /**
- * @param {number[][]} nums
- * @param {number} r
- * @param {number} c
- * @return {number[][]}
+ * @param {string} a
+ * @param {string} b
+ * @return {number}
  */
- var matrixReshape = function(nums, r, c) {
-    var sumArr = [];
-    var resultArr = [];
-    nums.forEach((value,index,array)=>{
-        sumArr = sumArr.concat(value);
-    })
-    var index = 0;
-    for(let i=0;i<r;i++){
-        var temp = [];
-        for(let k=0;k<c;k++){
-            temp.push(sumArr[index]);
-            index ++;
-        };
-        resultArr.push(temp);
-    };
-    console.log(resultArr);
+ var findLUSlength = function(a, b) {
+    let longStr = '';
+    let shortStr = '';
+    // a.length > b.length?(longStr = a,shortStr = b):(longStr = b,shortStr = a);
+    a.length > b.length?(()=>{longStr = a;shortStr = b})():(()=>{longStr = b;shortStr = a})();
+    let max = 0;
+    let i = 0;
+    for(letter of longStr){
+        if(shortStr.indexOf(letter) == -1){
+            i++;
+        }else{
+            if(i>max){
+                max = i;
+                i = 0;
+            }
+        }
+    }
+    return max>i?max:i; //判断longStr的最后一位字符串不属于shortStr的情况
 };
 
-matrixReshape([[1,2],[4,5],[6]],5,1);
-matrixReshape([[1,2],[4,5],[6]],1,5);
+findLUSlength('ac','abcdefggggg')
 
     </script>
 </body>
