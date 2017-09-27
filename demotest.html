@@ -9,31 +9,34 @@
 <body>
    <script>
 /**
- * @param {string} a
- * @param {string} b
- * @return {number}
+ * @param {number[]} findNums
+ * @param {number[]} nums
+ * @return {number[]}
  */
- var findLUSlength = function(a, b) {
-    let longStr = '';
-    let shortStr = '';
-    // a.length > b.length?(longStr = a,shortStr = b):(longStr = b,shortStr = a);
-    a.length > b.length?(()=>{longStr = a;shortStr = b})():(()=>{longStr = b;shortStr = a})();
-    let max = 0;
-    let i = 0;
-    for(letter of longStr){
-        if(shortStr.indexOf(letter) == -1){
-            i++;
+ var nextGreaterElement = function(findNums, nums) {
+    let resultArr = [];
+    findNums.forEach((value,index,array)=>{
+        let currIndex = nums.indexOf(value);
+        if(currIndex == nums.length -1){
+            resultArr.push(-1)
         }else{
-            if(i>max){
-                max = i;
-                i = 0;
+            let flag = false
+            for(let i=currIndex+1;i<nums.length;i++){
+                if(nums[i] > value){
+                    flag = true;
+                    resultArr.push(nums[i])
+                    return;
+                };
+            }
+            if(!flag){
+                resultArr.push(-1)
             }
         }
-    }
-    return max>i?max:i; //判断longStr的最后一位字符串不属于shortStr的情况
+    })
+    console.log(resultArr) ;
 };
 
-findLUSlength('ac','abcdefggggg')
+nextGreaterElement([1,3,5,2,4],[5,4,3,2,1])
 
     </script>
 </body>
