@@ -9,27 +9,28 @@
 <body>
    <script>
 /**
- * @param {number[]} nums
- * @return {number}
+ * @param {string} word
+ * @return {boolean}
  */
- var findMaxConsecutiveOnes = function(nums) {
-    let num = 0;
-    let max = 0;
-    nums.forEach((value,index,array)=>{
-        if(value == 0){
-            if(num > max){
-                max = num;
-            }
-            num = 0;
-        }else{
-            num ++;
-        }
-    })
-    if(num > max){max = num}; 
-    return max;
+ var detectCapitalUse = function(word) {
+    var reg_1 = /^[A-Z]+$/;
+    var reg_2 = /^[A-Za-z]+$/;
+    var reg_3 = /^[A-Z]|[a-z][A-Za-z]+&/;
+    var flag = false
+    if(reg_1.test(word)){
+        flag = true;
+    };
+    if(reg_2.test(word)){
+        flag = true;
+    };
+    if(reg_3.test(word)){
+        flag = true;
+    };
+    return flag == true?true:false;
+    console.log(flag == true?'true':'false')
 };
 
-findMaxConsecutiveOnes([1,1,0,1,1,1])
+detectCapitalUse('HAHA')
 
     </script>
 </body>
