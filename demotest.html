@@ -9,28 +9,24 @@
 <body>
    <script>
 /**
- * @param {string} word
- * @return {boolean}
+ * @param {string} s
+ * @param {string} t
+ * @return {character}
  */
- var detectCapitalUse = function(word) {
-    var reg_1 = /^[A-Z]+$/;
-    var reg_2 = /^[A-Za-z]+$/;
-    var reg_3 = /^[A-Z]|[a-z][A-Za-z]+&/;
-    var flag = false
-    if(reg_1.test(word)){
-        flag = true;
-    };
-    if(reg_2.test(word)){
-        flag = true;
-    };
-    if(reg_3.test(word)){
-        flag = true;
-    };
-    return flag == true?true:false;
-    console.log(flag == true?'true':'false')
-};
-
-detectCapitalUse('HAHA')
+ var findTheDifference = function(s, t) {
+    let Arr_s = [...s];
+    let Arr_t = [...t];
+    for(let i=0;i<Arr_s.length;i++){
+        for(let k=0;k<Arr_t.length;k++){
+            if(Arr_s[i] == Arr_t[k]){
+                Arr_t.splice(k,1);
+                break;
+            }
+        }
+    }
+    return Arr_t[0]
+}
+findTheDifference("aaav","aavva")
 
     </script>
 </body>
