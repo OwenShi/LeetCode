@@ -9,24 +9,21 @@
 <body>
    <script>
 /**
- * @param {string} s
- * @param {string} t
- * @return {character}
+ * @param {number} area
+ * @return {number[]}
  */
- var findTheDifference = function(s, t) {
-    let Arr_s = [...s];
-    let Arr_t = [...t];
-    for(let i=0;i<Arr_s.length;i++){
-        for(let k=0;k<Arr_t.length;k++){
-            if(Arr_s[i] == Arr_t[k]){
-                Arr_t.splice(k,1);
-                break;
-            }
+ var constructRectangle = function(area) {
+    var mid = Math.floor(Math.sqrt(area));
+        while (mid > 0){
+            if(area % mid == 0){
+                return [mid,(area/mid)]
+            };
+            mid --;
         }
-    }
-    return Arr_t[0]
-}
-findTheDifference("aaav","aavva")
+};
+
+constructRectangle(8);
+
 
     </script>
 </body>
