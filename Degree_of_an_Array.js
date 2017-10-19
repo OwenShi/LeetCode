@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-   <script>
 /**
  * @param {number[]} nums
  * @return {number}
  */
- var findShortestSubArray = function(nums) {
+var findShortestSubArray = function(nums) {
     var mapObj = {}
     var maxN = {
         num:0,
@@ -42,13 +32,8 @@
                 maxN.maxIndex = mapObj[nums[i]].maxIndex;
             }
         }
-    }
-    console.log(nums.slice(maxN.minIndex,maxN.maxIndex+1))
-
-
+    };
+    return(maxN.maxIndex - maxN.minIndex + 1)
 };
 
-findShortestSubArray([1,2,2,2,2,1,1,1])
-    </script>
-</body>
-</html>
+findShortestSubArray([1,2,1,2,4,5,4,5,7,8,4,5,9,8,6,8,9,4,2])
