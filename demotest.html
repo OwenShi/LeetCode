@@ -9,46 +9,21 @@
 <body>
    <script>
 /**
- * @param {number[]} nums
+ * @param {string} s
  * @return {number}
  */
- var findShortestSubArray = function(nums) {
-    var mapObj = {}
-    var maxN = {
-        num:0,
-        maxIndex:0,
-        minIndex:0
-    };
-    for(let i=0;i<nums.length;i++){
-        if(!mapObj[nums[i]]){
-            let temp = {
-                num:1,
-                minIndex:i,
-                maxIndex:i
-            }
-            mapObj[nums[i]] = temp;
-        }else{
-            mapObj[nums[i]].num ++;
-            mapObj[nums[i]].maxIndex = i;
-        }
-        if(mapObj[nums[i]].num > maxN.num){
-            maxN.num = mapObj[nums[i]].num;
-            maxN.minIndex = mapObj[nums[i]].minIndex;
-            maxN.maxIndex = mapObj[nums[i]].maxIndex;
-        }else if(mapObj[nums[i]].num == maxN.num){
-            if((mapObj[nums[i]].maxIndex-mapObj[nums[i]].minIndex) < (maxN.maxIndex - maxN.minIndex)){
-                maxN.num = mapObj[nums[i]].num;
-                maxN.minIndex = mapObj[nums[i]].minIndex;
-                maxN.maxIndex = mapObj[nums[i]].maxIndex;
-            }
-        }
-    }
-    console.log(nums.slice(maxN.minIndex,maxN.maxIndex+1))
-
-
+ var titleToNumber = function(s) {
+    var strArr = [...s];
+    var sum = 0;
+    strArr.forEach((value,index,array)=>{
+        console.log(Math.pow(26,index));
+        console.log(index);
+        sum += (Math.pow(26,index))*(value.charCodeAt() - 64)
+    })
+    console.log(sum);
 };
 
-findShortestSubArray([1,2,2,2,2,1,1,1])
+titleToNumber('AA');
     </script>
 </body>
 </html>
